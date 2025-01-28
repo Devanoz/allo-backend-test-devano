@@ -6,8 +6,6 @@ spring:
     username: caleg_user
     password: passwordForPemilu
     driver-class-name: org.postgresql.Driver
-  profiles:
-    active: development
   jpa:
     hibernate:
       ddl-auto: none
@@ -22,6 +20,7 @@ server:
   port: 8080
   servlet:
     context-path: /api/v1
+  address: 0.0.0.0
 logging:
   level:
     org.flywaydb: debug
