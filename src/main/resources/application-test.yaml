@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: backend-api-caleg
+  datasource:
+    url: jdbc:postgresql://localhost:5434/calegDB_test
+    username: caleg_user
+    password: passwordForPemilu
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  flyway:
+    enabled: false
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:db/schema.sql
+server:
+  port: 8080
+  servlet:
+    context-path: /api/v1
+logging:
+  level:
+    org.flywaydb: debug
