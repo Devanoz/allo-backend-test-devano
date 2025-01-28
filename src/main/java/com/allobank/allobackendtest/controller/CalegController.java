@@ -35,7 +35,14 @@ public class CalegController {
         if(sort.contains(",")) {
             String [] sortSplit = sort.split(",");
             sorting = Sort.by(sortSplit[1].equals("asc") ? Sort.Direction.ASC : Sort.Direction.DESC, sortSplit[0]);
-        }else {
+        } else if (sort.equals("asc")) {
+            sorting = Sort.by(Sort.Direction.ASC, "nomor_urut");
+        } else if (sort.equals("desc")) {
+            sorting = Sort.by(Sort.Direction.DESC, "nomor_urut");
+        } else if (sort.equals("nomor_urut")) {
+            sorting = Sort.by(Sort.Direction.ASC, "nomor_urut");
+        }
+        else {
             throw new IllegalArgumentException("Invalid sort parameter");
         }
 
