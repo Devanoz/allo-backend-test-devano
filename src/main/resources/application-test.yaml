@@ -2,7 +2,7 @@ spring:
   application:
     name: backend-api-caleg
   datasource:
-    url: jdbc:postgresql://localhost:5434/calegDB_test
+    url: jdbc:postgresql://${SPRING_DATASOURCE_TEST_URL:localhost:5434}/calegDB_test
     username: caleg_user
     password: passwordForPemilu
     driver-class-name: org.postgresql.Driver
