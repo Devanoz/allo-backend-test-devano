@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+        - "8080:8080"
+    environment:
+        - SPRING_DATASOURCE_URL=jdbc:postgresql://dbCaleg:5432/calegDB
+        - SPRING_DATASOURCE_USERNAME=caleg_user
+        - SPRING_DATASOURCE_PASSWORD=passwordForPemilu
+        - SPRING_FLYWAY_URL=jdbc:postgresql://dbCaleg:5432/calegDB
+        - SPRING_DATASOURCE_TEST_URL=jdbc:postgresql://db_caleg_test:5432/calegDB_test
+    volumes:
+      - .:/code
+    depends_on:
+      - dbCaleg
+      - db_caleg_test
+  dbCaleg:
+    image: postgres:13
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: calegDB
+      POSTGRES_USER: caleg_user
+      POSTGRES_PASSWORD: passwordForPemilu
+    volumes:
+      - db_data:/var/lib/postgresql/data
+  db_caleg_test:
+    image: postgres:13
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_DB: calegDB_test
+      POSTGRES_USER: caleg_user
+      POSTGRES_PASSWORD: passwordForPemilu
+    volumes:
+      - test_db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
+  test_db_data:
+
