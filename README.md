@@ -22,7 +22,10 @@ Model/Entity yang sudah disiapkan:
 - Nilai tambah jika ditambahkan unit test
 
 # How to Run
-Docker compose
+Docker
+```shell
+docker-compose build
+```
 ```shell
 docker-compose up
 ```
